@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExploreWorldGame
 {
-    class Entity
+    public class Entity
     {
         // constructor
         public Entity()
@@ -43,7 +43,7 @@ namespace ExploreWorldGame
             }
             else
             {
-                healthPoints -= damage;
+                healthPoints += damage;
             }
         }
     }

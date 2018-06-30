@@ -18,14 +18,14 @@ namespace ExploreWorldGame
         {
             Character player = new Character(100, "Tim", false, true, true, 0, 1);
 
-            Tile waterTile = new Tile("Water", 0.5f, 10, 0, true);
+            Tile waterTile = new Tile("Water", 0.5f, 0, 0, true);
             Tile grassTile = new Tile("Grass", 1, 0, 0, true);
             Tile treeTile = new Tile("Tree", 1, 0, 0, false);
             Tile mountainTile = new Tile("Mountain", 1, 0, 0, false);
-            Tile lavaTile = new Tile("Lava", 1, -10, 0, true);
+            Tile lavaTile = new Tile("Lava", 1, -100, 0, true);
             Tile treasureTile = new Tile("Treasure", 1, 0, 0, true);
 
-            Tile[,] mapGrid = new Tile[rowSize, colSize]
+            Tile[,] gameGrid = new Tile[rowSize, colSize]
                                {{grassTile,     grassTile,  mountainTile,   waterTile},
                                 {mountainTile,  grassTile,  lavaTile,       waterTile},
                                 {grassTile,     grassTile,  mountainTile,   mountainTile},
@@ -39,7 +39,7 @@ namespace ExploreWorldGame
             {
                 Console.WriteLine("Where do you want to go traveler? The X represents where you are now.\n");
                 // printing out game board
-                PrintGameBoard(mapGrid, currRow, currCol);
+                PrintGameBoard(gameGrid, currRow, currCol);
 
                 // reading direction from user input
                 string direction = Console.ReadLine();
@@ -48,11 +48,20 @@ namespace ExploreWorldGame
                 if (direction.ToLower() == "x")
                 {
                     Console.WriteLine("Thank you for joining the journey!\n");
+                    Console.Read();
                     break;
                 }
 
-                Move(mapGrid, direction, player);
+                Move(gameGrid, direction);
 
+                player = EvaluateGameTile(gameGrid[currRow, currCol], player);
+
+                if (player.GetHealthPoints() == 0)
+                {
+                    Console.WriteLine("You died.  Good luck on the next trip.");
+                    Console.Read();
+                    break;
+                }
             }
         }
 
@@ -103,7 +112,7 @@ namespace ExploreWorldGame
             Console.WriteLine();
         }
 
-        public static void Move(Tile[,] gameGrid, string direction, Character player)
+        public static void Move(Tile[,] gameGrid, string direction)
         {
             int row = currRow;
             int col = currCol;
@@ -141,8 +150,6 @@ namespace ExploreWorldGame
                 {
                     currRow = row;
                     currCol = col;
-
-                    EvaluateGameTile(gameGrid[currRow, currCol], player);
                 }
             }
             else
@@ -151,9 +158,11 @@ namespace ExploreWorldGame
             }
         }
 
-        private static void EvaluateGameTile(Tile tile, Character player)
+        private static Character EvaluateGameTile(Tile tile, Character player)
         {
             player.applyDamage(tile.healthModifier);
+
+            return player;
         }
 
         private static bool IsObstacleInWay(Tile[,] mapGrid, int row, int col)

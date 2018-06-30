@@ -26,5 +26,9 @@ namespace ExploreWorldGame
 
 
         // methods
+        public int GetHealthPoints()
+        {
+            return healthPoints;
+        }
     }
 }
