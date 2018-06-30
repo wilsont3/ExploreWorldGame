@@ -1,0 +1,7 @@
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\bin\Debug\ExploreWorldGame.exe.config
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\bin\Debug\ExploreWorldGame.exe
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\bin\Debug\ExploreWorldGame.pdb
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\obj\Debug\ExploreWorldGame.csprojResolveAssemblyReference.cache
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\obj\Debug\ExploreWorldGame.csproj.CoreCompileInputs.cache
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\obj\Debug\ExploreWorldGame.exe
+C:\Users\Tim\Documents\Coding\ExploreWorldGame\ExploreWorldGame\obj\Debug\ExploreWorldGame.pdb
